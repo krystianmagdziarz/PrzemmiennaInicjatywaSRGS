@@ -1,0 +1,146 @@
+<?xml version= "1.0" encoding="UTF-8" ?>
+<grammar xmlns="http://www.w3.org/2001/06/grammar" xml:lang="en-US">
+
+	<rule id="STATE" scope="public">
+	<one-of>
+		<item>
+			<item><ruleref uri="#BREATH"/><tag>out.breath=rules.BREATH.breath</tag></item>
+			<item><ruleref uri="#WALK"/><tag>out.walk=rules.WALK.walk;</tag></item>	
+			<item><ruleref uri="#BLOOD"/><tag>out.blood=rules.BLOOD.blood;</tag></item>
+		</item>
+
+		<item>
+			<item><ruleref uri="#BREATH"/><tag>out.breath=rules.BREATH.breath</tag></item>
+			<item><ruleref uri="#BLOOD"/><tag>out.blood=rules.BLOOD.blood;</tag></item>	
+			<item><ruleref uri="#WALK"/><tag>out.walk=rules.WALK.walk;</tag></item>
+		</item>
+
+		<item>
+			<item><ruleref uri="#BLOOD"/><tag>out.blood=rules.BLOOD.blood;</tag></item>
+			<item><ruleref uri="#BREATH"/><tag>out.breath=rules.BREATH.breath</tag></item>
+			<item><ruleref uri="#WALK"/><tag>out.walk=rules.WALK.walk;</tag></item>
+		</item>
+
+		<item>
+			<item><ruleref uri="#BLOOD"/><tag>out.blood=rules.BLOOD.blood;</tag></item>
+			<item><ruleref uri="#WALK"/><tag>out.walk=rules.WALK.walk;</tag></item>
+			<item><ruleref uri="#BREATH"/><tag>out.breath=rules.BREATH.breath</tag></item>
+		</item>
+
+		<item>
+			<item><ruleref uri="#WALK"/><tag>out.walk=rules.WALK.walk;</tag></item>
+			<item><ruleref uri="#BLOOD"/><tag>out.blood=rules.BLOOD.blood;</tag></item>
+			<item><ruleref uri="#BREATH"/><tag>out.breath=rules.BREATH.breath</tag></item>
+		</item>
+
+		<item>
+			<item><ruleref uri="#WALK"/><tag>out.walk=rules.WALK.walk;</tag></item>
+			<item><ruleref uri="#BREATH"/><tag>out.breath=rules.BREATH.breath</tag></item>
+			<item><ruleref uri="#BLOOD"/><tag>out.blood=rules.BLOOD.blood;</tag></item>
+		</item>
+
+		<item>
+			<item><ruleref uri="#BREATH"/><tag>out.breath=rules.BREATH.breath</tag></item>
+			<item><ruleref uri="#WALK"/><tag>out.walk=rules.WALK.walk;</tag></item>
+		</item>
+
+		<item>
+			<item><ruleref uri="#BREATH"/><tag>out.breath=rules.BREATH.breath</tag></item>
+			<item><ruleref uri="#BLOOD"/><tag>out.blood=rules.BLOOD.blood;</tag></item>
+		</item>
+
+		<item>
+			<item><ruleref uri="#BLOOD"/><tag>out.blood=rules.BLOOD.blood;</tag></item>
+			<item><ruleref uri="#BREATH"/><tag>out.breath=rules.BREATH.breath</tag></item>
+		</item>
+
+		<item>
+			<item><ruleref uri="#BLOOD"/><tag>out.blood=rules.BLOOD.blood;</tag></item>
+			<item><ruleref uri="#WALK"/><tag>out.walk=rules.WALK.walk;</tag></item>
+		</item>
+
+		<item>
+			<item><ruleref uri="#WALK"/><tag>out.walk=rules.WALK.walk;</tag></item>
+			<item><ruleref uri="#BREATH"/><tag>out.breath=rules.BREATH.breath</tag></item>
+		</item>
+
+		<item>
+			<item><ruleref uri="#WALK"/><tag>out.walk=rules.WALK.walk;</tag></item>
+			<item><ruleref uri="#BLOOD"/><tag>out.blood=rules.BLOOD.blood;</tag></item>
+		</item>
+
+		<item>
+			<ruleref uri="#WALK"/>
+		</item>
+
+		<item>
+			<ruleref uri="#BREATH"/>
+		</item>
+
+		<item>
+			<ruleref uri="#BLOOD"/>
+		</item>
+	</one-of>
+	</rule>
+
+	<rule id="WALK" scope="public">
+		<one-of>
+			<item>
+			<item repeat="0-1"> 
+			  <ruleref uri="#FILL_ADDITIONAL"/>
+			</item>
+			<one-of>
+				<item> walk  <tag> out.walk = "walking"; 	</tag></item>
+				<item> walking  <tag> out.walk = "walking";  	</tag></item>
+				<item> not walk  <tag> out.walk = "not walking"; 	</tag></item>
+				<item> not walking <tag> out.walk = "not walking";	</tag></item>
+			</one-of>
+			</item>
+		</one-of>
+	</rule>
+
+	<rule id="BREATH" scope="public">
+		<one-of>
+			<item>
+			<item repeat="0-1">
+			  <ruleref uri="#FILL_ADDITIONAL"/>
+			</item>
+			<one-of>
+				<item> breath  <tag> out.breath = "breathing";	</tag></item>
+				<item> breathing <tag> out.breath = "breathing";	</tag></item>
+				<item> not breath <tag> out.breath = "not breathing";	</tag></item>
+				<item> not breathing <tag> out.breath = "not breathing";	</tag></item>
+			</one-of>
+			</item>
+		</one-of>
+	</rule>
+
+	<rule id="BLOOD" scope="public">
+		<one-of>
+			<item>
+			<item repeat="0-1">
+			  <ruleref uri="#FILL_ADDITIONAL"/>
+			</item>
+			<one-of>
+				<item> blood  <tag> out.blood = "blooding";  </tag></item>
+				<item> blooding  <tag> out.blood = "blooding"; 	</tag></item>
+				<item> not blood  <tag> out.blood = "not blooding";	</tag></item>
+				<item> not blooding  <tag> out.blood = "not blooding";	</tag></item>
+			</one-of>
+			</item>
+		</one-of>
+	</rule>
+
+	<rule id="FILL_ADDITIONAL" scope="public">
+		<one-of>
+			<item> victim </item>
+			<item> the victim </item>
+			<item> the victim is </item>
+			<item> he is </item>
+			<item> she is </item>
+			<item> he </item>
+			<item> she </item>
+			<item> and </item>
+		</one-of>
+	</rule>
+</grammar>

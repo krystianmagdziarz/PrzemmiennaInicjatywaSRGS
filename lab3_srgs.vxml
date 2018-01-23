@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<vxml version="2.1">
+
+ <form id="statevictim">
+  <grammar src="lab3_grammar.xml#STATE" type="application/grammar-xml"/>
+
+  <initial name="myInit">
+      <prompt>  
+	What is the victim condition ?
+      </prompt>
+
+    <nomatch count="1">That's not exacly what I wanted to hear. Let's try again<reprompt/></nomatch>
+    <nomatch count="2">Still not there. Let's try again<reprompt/></nomatch>
+    <nomatch count="3">I'm sorry i didn't got it
+        <assign name="myInit" expr="true"/>
+        <reprompt/>
+    </nomatch>
+
+    <noinput count="1">I can't hear anything. Let's try again.<reprompt/></noinput>
+    <noinput count="2">I can't hear anything. Let's try again.<reprompt/></noinput>
+    <noinput count="3">Good bye.</noinput>
+  </initial>
+
+
+  <field name="walk">
+    <prompt>
+	Is the victim walking ?
+    </prompt>
+    <grammar src="lab3_grammar.xml#WALK" type="application/grammar-xml"/>
+  </field>
+
+  <field name="breath">
+    <prompt>
+	Is the victim breathing ?
+    </prompt>
+    <grammar src="lab3_grammar.xml#BREATH" type="application/grammar-xml"/>
+  </field>
+
+  <field name="blood">
+    <prompt>
+	Is the victim blooding ?
+    </prompt>
+    <grammar src="lab3_grammar.xml#BLOOD" type="application/grammar-xml"/>
+  </field>
+
+<filled mode="all">
+    <prompt>
+	You said that the victim is <value expr="walk"/>, <value expr="breath"/> , <value expr="blood"/>
+    </prompt>
+ </filled>
+
+
+ </form>
+</vxml>
+
